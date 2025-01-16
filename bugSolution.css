@@ -1,0 +1,39 @@
+The solution involves refactoring the CSS to avoid the use of `!important`.  Here are a couple of possible approaches:
+
+**Approach 1:  Increased Specificity**
+
+Increase the specificity of the parent selector by adding another class or ID to make it more specific than `.child`
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.parent.specific .child {
+  color: green;
+}
+```
+
+**Approach 2: CSS Cascade**
+
+Reorder the CSS rules so the intended style is declared later.  CSS cascade will ensure that the last matching selector is applied.
+
+```css
+.parent {
+  color: blue;
+}
+
+.parent .child {
+  color: green;
+}
+
+.child {
+  color: red;
+}
+```
+
+It's generally recommended to avoid `!important` whenever possible. It can make CSS harder to maintain and debug.
